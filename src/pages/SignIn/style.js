@@ -5,7 +5,8 @@ export const SignInSC = styled.div`
   height: 100vh;
   
   main {
-    width: 31.6rem;
+    width: 90%;
+    max-width: 31.6rem;
     margin: 15.8rem auto 0;
 
     > div {
