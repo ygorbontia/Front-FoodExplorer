@@ -4,11 +4,9 @@ export const SignInSC = styled.div`
   width: 100%;
   height: 100vh;
   
-    display: grid;
-    place-content: center;
-  
   main {
     width: 31.6rem;
+    margin: 15.8rem auto 0;
 
     > div {
       margin-bottom: 7.3rem;
