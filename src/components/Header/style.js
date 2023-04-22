@@ -29,9 +29,14 @@ export const HeaderSC = styled.div`
         font-size: 2.116rem;
       }
 
-      img {
+      svg {
         width: 2.461rem;
         height: 2.461rem;
+
+        path {
+        width: 2.461rem;
+        height: 2.461rem;
+        }
       }
     }
 
