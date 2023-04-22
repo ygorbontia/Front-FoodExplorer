@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const DishCardSC = styled.div`
-  width: 21rem;
+  > div {
+    width: 21rem;
   background-color: ${({ theme }) => theme.colors.dark_200};
   border: solid 1px ${({ theme }) => theme.colors.dark_300};
   border-radius: 8px;
@@ -113,5 +114,6 @@ export const DishCardSC = styled.div`
         -moz-appearance: none;
       }
     }
+  }
   }
 `;

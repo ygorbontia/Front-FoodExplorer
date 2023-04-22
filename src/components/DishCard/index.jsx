@@ -8,32 +8,34 @@ import emptyFavorite from '../../assets/favorite-empty.svg';
 export function DishCard() {
   return (
     <DishCardSC>
-      <button className="favorites">
-        <img src={ emptyFavorite } alt="" />
-      </button>
-
-      <img src={ dish } alt="imagem do prato" />
-
-      <p>Salada Ravanello</p>
-
-      <span>R$ 49,97</span>
-
       <div>
-        <div className="quantity">
-          <button>
-            <img src={ decrease } alt="" />
-          </button>
+        <button className="favorites">
+          <img src={ emptyFavorite } alt="" />
+        </button>
 
-          <input type="number" min="1" max="99" defaultValue={ 1 } />
+        <img src={ dish } alt="imagem do prato" />
 
-          <button>
-            <img src={ increase } alt="" />
+        <p>Salada Ravanello</p>
+
+        <span>R$ 49,97</span>
+
+        <div>
+          <div className="quantity">
+            <button>
+              <img src={ decrease } alt="" />
+            </button>
+
+            <input type="number" min="1" max="99" defaultValue={ 1 } />
+
+            <button>
+              <img src={ increase } alt="" />
+            </button>
+          </div>
+
+          <button type="button">
+            incluir
           </button>
         </div>
-
-        <button type="button">
-          incluir
-        </button>
       </div>
     </DishCardSC>
   )

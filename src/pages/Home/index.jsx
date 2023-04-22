@@ -3,6 +3,7 @@ import { HomeSC, BannerSC } from './style';
 import macarrons from '../../assets/macarrons.png';
 
 import { Header } from '../../components/Header';
+import { DishCategories } from '../../components/DishCategories';
 
 export function Home() {
   return (
@@ -19,6 +20,9 @@ export function Home() {
         </div>
       </BannerSC>
 
+      <main>
+        <DishCategories title="Refeições" />
+      </main>
     </HomeSC>
   )
 }
