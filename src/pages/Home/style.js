@@ -3,6 +3,14 @@ import styled from 'styled-components';
 export const HomeSC = styled.div`
   width: 100%;
   min-height: 100vh;
+
+  main {
+    margin-bottom: 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
 `;
 
 export const BannerSC = styled.div`

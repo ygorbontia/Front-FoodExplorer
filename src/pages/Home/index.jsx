@@ -5,6 +5,7 @@ import macarrons from '../../assets/macarrons.png';
 import { Header } from '../../components/Header';
 import { DishCategories } from '../../components/DishCategories';
 import { DishCard } from '../../components/DishCard';
+import { Footer } from '../../components/Footer';
 
 export function Home() {
   return (
@@ -27,7 +28,21 @@ export function Home() {
           <DishCard />
           <DishCard />
         </DishCategories>
+
+        <DishCategories title="Sobremesas">
+          <DishCard />
+          <DishCard />
+          <DishCard />
+        </DishCategories>
+        
+        <DishCategories title="Bebidas">
+          <DishCard />
+          <DishCard />
+          <DishCard />
+        </DishCategories>
       </main>
+
+      <Footer />
     </HomeSC>
   )
 }
