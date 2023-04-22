@@ -34,8 +34,8 @@ export const HeaderSC = styled.div`
         height: 2.461rem;
 
         path {
-        width: 2.461rem;
-        height: 2.461rem;
+          width: 2.461rem;
+          height: 2.461rem;
         }
       }
     }
