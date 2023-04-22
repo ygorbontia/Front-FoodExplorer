@@ -23,8 +23,8 @@ export const DishCardSC = styled.div`
     right: 1.6rem;
 
     img {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 2.4rem;
+      height: 2.2rem;
     }
   }
 
