@@ -1,16 +1,12 @@
 import { DishCategoriesSC } from './style';
 
-import { DishCard } from '../DishCard';
-
-export function DishCategories({ title }) {
+export function DishCategories({ title, children }) {
   return (
     <DishCategoriesSC>
       <h2>{ title }</h2>
 
       <div className="slider">
-        <DishCard />
-        <DishCard />
-        <DishCard />
+        { children }
       </div>
     </DishCategoriesSC>
   )

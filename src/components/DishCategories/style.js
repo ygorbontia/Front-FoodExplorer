@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const DishCategoriesSC = styled.div`
   width: 100%;
-  height: 34rem;
 
   display: flex;
   flex-direction: column;
