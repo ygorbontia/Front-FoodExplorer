@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const DishCategoriesSC = styled.div`
-  width: 100%;
+  width: fit-content;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -18,6 +19,8 @@ export const DishCategoriesSC = styled.div`
   }
 
   .slider {
+    max-width: 37.2rem;
+
     display: flex;
     gap: 1.6rem;
 
