@@ -9,8 +9,6 @@ export const DishCategoriesSC = styled.div`
   gap: 2.4rem;
 
   > h2 {
-    margin-left: 2.4rem;
-
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1.8rem;
@@ -25,16 +23,5 @@ export const DishCategoriesSC = styled.div`
     gap: 1.6rem;
 
     overflow-x: hidden;
-
-    > div {
-      &:first-child {
-        padding-left: 2.4rem;
-      }
-
-      &:last-child {
-        padding-right: 2.4rem;
-      }
-    }
-
   }
 `;
