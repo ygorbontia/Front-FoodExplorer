@@ -1,14 +1,14 @@
-import { DishSC } from './style';
+import { DishDetailsSC } from './style';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 
-export function Dish() {
+export function DishDetails() {
   return (
-    <DishSC>
+    <DishDetailsSC>
       <Header />
 
       <Footer />
-    </DishSC>
+    </DishDetailsSC>
   )
 }
