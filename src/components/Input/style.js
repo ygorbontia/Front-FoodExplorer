@@ -32,4 +32,16 @@ export const InputSC = styled.div`
       color: ${({ theme }) => theme.colors.light_500};
     }
   }
+
+  input[type="number"] {
+    appearance: number;
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button, 
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
 `;
