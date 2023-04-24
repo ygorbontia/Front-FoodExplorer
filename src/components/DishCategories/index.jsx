@@ -6,7 +6,7 @@ import { DishCard } from '../../components/DishCard';
 
 import { motion } from 'framer-motion';
 
-export function DishCategories({ title }) {
+export function DishCategories({ title, admin }) {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
 
@@ -20,10 +20,10 @@ export function DishCategories({ title }) {
 
       <motion.div className="carousel" whileTap={{ cursor: "grabbing" }} ref={ carousel }>
         <motion.div className="slider" drag="x" dragConstraints={{ right: 0, left: -width }}>
-          <DishCard />
-          <DishCard />
-          <DishCard />
-          <DishCard />
+          <DishCard admin={ admin } />
+          <DishCard admin={ admin } />
+          <DishCard admin={ admin } />
+          <DishCard admin={ admin } />
         </motion.div>
       </motion.div>
     </DishCategoriesSC>

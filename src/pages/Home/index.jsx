@@ -6,10 +6,10 @@ import { Header } from '../../components/Header';
 import { DishCategories } from '../../components/DishCategories';
 import { Footer } from '../../components/Footer';
 
-export function Home() {
+export function Home({ admin = true }) {
   return (
     <HomeSC>
-      <Header />
+      <Header admin={ admin } />
 
       <BannerSC>
         <img src={ macarrons } alt="Imagem de macarrons coloridos" />
@@ -22,11 +22,11 @@ export function Home() {
       </BannerSC>
 
       <main>
-        <DishCategories title="Refeições" />
+        <DishCategories admin={ admin } title="Refeições" />
 
-        <DishCategories title="Sobremesas" />
+        <DishCategories admin={ admin } title="Sobremesas" />
         
-        <DishCategories title="Bebidas" />
+        <DishCategories admin={ admin } title="Bebidas" />
       </main>
 
       <Footer />

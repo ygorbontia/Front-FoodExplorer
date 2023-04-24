@@ -3,19 +3,21 @@ import styled from 'styled-components';
 export const DishCardSC = styled.div`
   > div {
     width: 21rem;
-  background-color: ${({ theme }) => theme.colors.dark_200};
-  border: solid 1px ${({ theme }) => theme.colors.dark_300};
-  border-radius: 8px;
-  padding: 2.4rem;
+    height: 29.4rem;
+    
+    background-color: ${({ theme }) => theme.colors.dark_200};
+    border: solid 1px ${({ theme }) => theme.colors.dark_300};
+    border-radius: 8px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
 
-  position: relative;
+    position: relative;
 
-  .favorites {
+  .icon {
     background: none;
     border: none;
 

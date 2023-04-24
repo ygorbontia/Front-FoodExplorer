@@ -1,20 +1,16 @@
 import styled from 'styled-components';
 
-export const HeaderSC = styled.div`
-  width: 100%;
+export const HeaderSC = styled.header`
+  width: 42.8rem;
   height: 11.4rem;
   background-color: ${({ theme }) => theme.colors.dark_700};
-  padding: 5.6rem 0 2.4rem;
-
-  > nav {
-    max-width: 37.2rem;
-    margin: 0 auto;
-
+  margin: 0 auto;
+  padding: 5.6rem 2.8rem 2.4rem;
+  
+  nav {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-
+    
     button {
       width: 2.4rem;
       height: 1.8rem;
@@ -22,34 +18,29 @@ export const HeaderSC = styled.div`
       border: none;
     }
 
-    > a div {
+    a div {
       gap: .8rem;
-
-      h1 {
-        font-size: 2.116rem;
-      }
 
       svg {
         width: 2.461rem;
         height: 2.461rem;
+      }
 
-        path {
-          width: 2.461rem;
-          height: 2.461rem;
-        }
+      h1 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 2.116rem;
+        line-height: 1;
+        color: ${({ theme }) => theme.colors.light_100};
       }
     }
+  }
+  
+  .user {
+    justify-content: space-between;
 
     .receipt {
-      width: 3.754rem;
-      height: 3.8rem;
-
       position: relative;
-      
-      img {
-        position: relative;
-        top: 2px;
-      }
 
       span {
         width: 2rem;
@@ -58,19 +49,40 @@ export const HeaderSC = styled.div`
         border: none;
         border-radius: 99px;
 
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
+
+        position: absolute;
+        top: -.9rem;
+        right: -1.2rem;
 
         font-family: ${({ theme }) => theme.fonts.poppins.medium_100.family};
         font-weight: ${({ theme }) => theme.fonts.poppins.medium_100.weight};
         font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
         line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
         color: ${({ theme }) => theme.colors.light_100};
+      }
+    }
+  }
+  
+  .admin {
+    a {
+      width: fit-content;
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+
+      p {
+        align-self: flex-end;
+
+        font-family: ${({ theme }) => theme.fonts.roboto.smallest_regular.family};
+        font-weight: ${({ theme }) => theme.fonts.roboto.smallest_regular.weight};
+        font-size: ${({ theme }) => theme.fonts.roboto.smallest_regular.size};
+        line-height: ${({ theme }) => theme.fonts.roboto.smallest_regular.height};
+        color: ${({ theme }) => theme.colors.cake_200};
       }
     }
   }

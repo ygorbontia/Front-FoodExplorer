@@ -4,7 +4,7 @@ import close from '../../assets/Close.svg'
 
 import { Footer } from '../../components/Footer';
 
-export function Menu() {
+export function Menu({ admin }) {
   return (
     <MenuSC>
       <header>
@@ -25,6 +25,13 @@ export function Menu() {
         </label>
 
         <ul>
+          { admin ?
+            <li>
+              <a href="">Novo prato</a>
+            </li>
+          :
+            false
+          }
           <li>
             <a href="">Sair</a>
           </li>

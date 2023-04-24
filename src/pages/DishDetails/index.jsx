@@ -9,7 +9,7 @@ import dish from '../../assets/dishes/image 2.png'
 export function DishDetails({ admin }) {
   return (
     <DishDetailsSC>
-      <Header />
+      <Header admin={ admin } />
 
       <main>
         <a href="#">
