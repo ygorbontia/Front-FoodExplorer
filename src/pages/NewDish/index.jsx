@@ -2,6 +2,7 @@ import { NewDishSC } from './style';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { Ingredients } from '../../components/Ingredients';
 import { Footer } from '../../components/Footer';
 
 export function NewDish() {
@@ -52,8 +53,8 @@ export function NewDish() {
           <p>Ingredientes</p>
 
           <div className="ingredients">
-            {/* <Ingredients isNew value="Adicionar" */}
-            {/* <Ingredients value="Pão Naan" */}
+            <Ingredients isNew />
+            <Ingredients value="Pão Naan" />
           </div>
         </div>
 

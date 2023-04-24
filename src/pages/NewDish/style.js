@@ -119,5 +119,16 @@ export const NewDishSC = styled.div`
       }
     }
 
+    .ingredients {
+      width: 100%;
+      background-color: ${({ theme }) => theme.colors.dark_800};
+      border: none;
+      border-radius: 8px;
+      padding: .4rem .8rem;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem;
+    }
   }
 `;
