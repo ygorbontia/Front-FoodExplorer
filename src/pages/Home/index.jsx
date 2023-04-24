@@ -4,7 +4,6 @@ import macarrons from '../../assets/macarrons.png';
 
 import { Header } from '../../components/Header';
 import { DishCategories } from '../../components/DishCategories';
-import { DishCard } from '../../components/DishCard';
 import { Footer } from '../../components/Footer';
 
 export function Home() {
@@ -23,23 +22,11 @@ export function Home() {
       </BannerSC>
 
       <main>
-        <DishCategories title="Refeições">
-          <DishCard />
-          <DishCard />
-          <DishCard />
-        </DishCategories>
+        <DishCategories title="Refeições" />
 
-        <DishCategories title="Sobremesas">
-          <DishCard />
-          <DishCard />
-          <DishCard />
-        </DishCategories>
+        <DishCategories title="Sobremesas" />
         
-        <DishCategories title="Bebidas">
-          <DishCard />
-          <DishCard />
-          <DishCard />
-        </DishCategories>
+        <DishCategories title="Bebidas" />
       </main>
 
       <Footer />
