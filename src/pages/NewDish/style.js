@@ -6,7 +6,63 @@ export const NewDishSC = styled.div`
   margin: 0 auto;
 
   header {
+    width: 100%;
+    height: 11.4rem;
+    background-color: ${({ theme }) => theme.colors.dark_700};
+    padding: 4.6rem 2.8rem 2.4rem;
 
+    nav {
+      display: flex;
+      flex-direction: row;
+      gap: 7rem;
+      
+      button {
+        background: none;
+        border: none;
+      }
+
+      a {
+        width: 33.2rem;
+        margin: 0 auto;
+
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+
+        > div {
+          width: fit-content;
+
+          align-items: center;
+          gap: .8rem;
+
+          h1 {
+            font-size: 2.116rem;
+          }
+
+          svg {
+            width: 2.461rem;
+            height: 2.461rem;
+
+            path {
+              width: 2.461rem;
+              height: 2.461rem;
+            }
+          }
+        }
+
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+
+        p {
+          font-family: ${({ theme }) => theme.fonts.roboto.smallest_regular.family};
+          font-weight: ${({ theme }) => theme.fonts.roboto.smallest_regular.weight};
+          font-size: ${({ theme }) => theme.fonts.roboto.smallest_regular.size};
+          line-height: ${({ theme }) => theme.fonts.roboto.smallest_regular.height};
+          color: ${({ theme }) => theme.colors.cake_200};
+        }
+      }
+    }
   }
 
   main {
@@ -129,6 +185,10 @@ export const NewDishSC = styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.6rem;
+    }
+
+    > button {
+      background-color: ${({ theme }) => theme.colors.tomato_400};
     }
   }
 `;
