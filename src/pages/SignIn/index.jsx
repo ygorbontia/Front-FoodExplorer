@@ -11,6 +11,8 @@ export function SignIn() {
         <Brand />
         
         <form>
+          <legend>Faça login</legend>
+
           <Input label="Email" type="email" placeholder="Exemplo: exemplo@exemplo.com.br" />
 
           <Input label="Senha" type="password" placeholder="No mínimo 6 caracteres" />

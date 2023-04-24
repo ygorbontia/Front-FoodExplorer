@@ -11,6 +11,8 @@ export function SignUp() {
         <Brand />
         
         <form>
+          <legend>Faça login</legend>
+          
           <Input label="Seu nome" type="text" placeholder="Exemplo: exemplo@exemplo.com.br" />
 
           <Input label="Email" type="email" placeholder="Exemplo: exemplo@exemplo.com.br" />
