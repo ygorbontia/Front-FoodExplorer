@@ -2,13 +2,13 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/global';
 import theme from './styles/theme';
 
-import { SignUp } from './pages/SignUp';
+import { Home } from './pages/Home';
 
 export function App() {
   return (
     <ThemeProvider theme={ theme }>
       <GlobalStyle />
-      <SignUp />
+      <Home />
     </ThemeProvider>
   )
 };
