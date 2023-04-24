@@ -16,12 +16,17 @@ export const DishCategoriesSC = styled.div`
     color: ${({ theme }) => theme.colors.light_300};
   }
 
-  .slider {
+  .carousel {
     max-width: 37.2rem;
+    
+    cursor: grab;
+  
+    overflow-x: hidden;
+  }
 
+  .slider {
     display: flex;
     gap: 1.6rem;
-
-    overflow-x: hidden;
+    
   }
 `;
