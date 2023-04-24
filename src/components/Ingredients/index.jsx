@@ -1,9 +1,9 @@
 import { IngredientsSC } from './style';
 
-export function Ingredients({ isNew, value }) {
+export function Ingredients({ isNew, value, placeholder }) {
   return (
     <IngredientsSC isNew={ isNew }>
-      <input type="text" defaultValue={ value } placeholder="Adicionar" readOnly={ !isNew } />
+      <input type="text" defaultValue={ value } placeholder={ placeholder } readOnly={ !isNew } />
 
       <button>
         { isNew? 

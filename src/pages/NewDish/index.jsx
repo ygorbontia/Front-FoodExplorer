@@ -1,7 +1,5 @@
 import { NewDishSC } from './style';
 
-import menu from '../../assets/Menu.svg';
-
 import { Brand } from '../../components/Brand';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -69,7 +67,7 @@ export function NewDish() {
           <p>Ingredientes</p>
 
           <div className="ingredients">
-            <Ingredients isNew />
+            <Ingredients isNew placeholder="Adicionar" />
             <Ingredients value="Pão Naan" />
           </div>
         </div>
