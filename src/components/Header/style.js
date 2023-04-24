@@ -11,7 +11,7 @@ export const HeaderSC = styled.header`
     display: flex;
     align-items: center;
     
-    button {
+    button:first-child {
       width: 2.4rem;
       height: 1.8rem;
       background: none;
@@ -34,6 +34,14 @@ export const HeaderSC = styled.header`
         color: ${({ theme }) => theme.colors.light_100};
       }
     }
+
+    > label {
+      display: none;
+    }
+
+    .logout {
+      display: none;
+    }
   }
   
   .user {
@@ -42,7 +50,7 @@ export const HeaderSC = styled.header`
     .receipt {
       position: relative;
 
-      span {
+      .mobile {
         width: 2rem;
         height: 2rem;
         background-color: ${({ theme }) => theme.colors.tomato_100};
@@ -62,6 +70,10 @@ export const HeaderSC = styled.header`
         font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
         line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
         color: ${({ theme }) => theme.colors.light_100};
+      }
+
+      .desktop {
+        display: none;
       }
     }
   }
@@ -83,6 +95,82 @@ export const HeaderSC = styled.header`
         font-size: ${({ theme }) => theme.fonts.roboto.smallest_regular.size};
         line-height: ${({ theme }) => theme.fonts.roboto.smallest_regular.height};
         color: ${({ theme }) => theme.colors.cake_200};
+      }
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    width: 100%;
+    height: 10.4rem;
+    padding: 2.4rem 0;
+
+    nav {
+      gap: 3.2rem;
+
+      .menu {
+        display: none;
+      }
+
+      a div {
+        gap: 1rem;
+
+        svg {
+          width: 3rem;
+          height: 3rem;
+        }
+
+        h1 {
+          font-family: ${({ theme }) => theme.fonts.roboto.bigger_bold.family};
+          font-weight: ${({ theme }) => theme.fonts.roboto.bigger_bold.weight};
+          font-size: ${({ theme }) => theme.fonts.roboto.bigger_bold.size};
+          line-height: ${({ theme }) => theme.fonts.roboto.bigger_bold.height};
+        }
+      }
+
+      > label {
+        width: 58.1rem;
+        padding: 1.2rem 9.9rem;
+        
+        display: flex;
+      }
+
+      .logout {
+        background: none;
+        border: none;
+
+        display: block;
+      }
+    }
+
+    .user {
+      align-items: center;
+      justify-content: center;
+
+      .receipt {
+        width: 21.6rem;
+        height: 5.6rem;
+        background-color: ${({ theme }) => theme.colors.tomato_100};
+        border: none;
+        border-radius: 5px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .8rem;
+
+        .mobile {
+          display: none;
+        }
+
+        .desktop {
+          display: block;
+
+          font-family: ${({ theme }) => theme.fonts.poppins.medium_100.family};
+          font-weight: ${({ theme }) => theme.fonts.poppins.medium_100.weight};
+          font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
+          line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
+          color: ${({ theme }) => theme.colors.light_100};
+        }
       }
     }
   }
