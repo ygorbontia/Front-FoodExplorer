@@ -48,6 +48,9 @@ export const HeaderSC = styled.header`
     justify-content: space-between;
 
     .receipt {
+      background: none;
+      border: none;
+
       position: relative;
 
       .mobile {
@@ -97,12 +100,20 @@ export const HeaderSC = styled.header`
         color: ${({ theme }) => theme.colors.cake_200};
       }
     }
+
+    label + button {
+      display: none;
+    }
   }
 
   @media screen and (min-width: 1000px) {
     width: 100%;
     height: 10.4rem;
     padding: 2.4rem 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     nav {
       gap: 3.2rem;
@@ -171,6 +182,38 @@ export const HeaderSC = styled.header`
           line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
           color: ${({ theme }) => theme.colors.light_100};
         }
+      }
+    }
+
+    .admin {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      
+      a {
+        width: 19.7rem;
+        margin: 0;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        > div {
+          width: fit-content;
+        }
+
+        p {
+          justify-self: flex-end;
+        }
+      }
+
+      label + button {
+        width: 21.6rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
