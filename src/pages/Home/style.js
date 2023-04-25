@@ -14,6 +14,8 @@ export const HomeSC = styled.div`
 
   @media screen and (min-width: 1000px) {
     main {
+      margin-bottom: 4.8rem;
+
       gap: 4.8rem;
     }
   }

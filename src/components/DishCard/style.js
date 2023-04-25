@@ -145,6 +145,8 @@ export const DishCardSC = styled.div`
       }
 
       .description {
+        padding: 0 2.4rem;
+
         display: block;
         
         font-family: ${({ theme }) => theme.fonts.roboto.smaller_regular.family};
@@ -152,6 +154,7 @@ export const DishCardSC = styled.div`
         font-size: ${({ theme }) => theme.fonts.roboto.smaller_regular.size};
         line-height: ${({ theme }) => theme.fonts.roboto.smaller_regular.height};
         color: ${({ theme }) => theme.colors.light_400};
+        text-align: center;
       }
 
       span {

@@ -6,7 +6,7 @@ import { Header } from '../../components/Header';
 import { DishCategories } from '../../components/DishCategories';
 import { Footer } from '../../components/Footer';
 
-export function Home({ admin = false }) {
+export function Home({ admin }) {
   return (
     <HomeSC>
       <Header admin={ admin } />

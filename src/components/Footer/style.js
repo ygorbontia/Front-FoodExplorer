@@ -39,4 +39,33 @@ export const FooterSC = styled.div`
     line-height: 1;
     color: ${({ theme }) => theme.colors.light_200};
   }
+
+  @media screen and (min-width: 1000px) {
+    justify-content: space-between;
+
+    padding: 0 12.3rem;
+
+    > div {
+      gap: 1rem;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+      
+      h1 {
+        font-family: ${({ theme }) => theme.fonts.roboto.bigger_bold.family};
+        font-weight: ${({ theme }) => theme.fonts.roboto.bigger_bold.weight};
+        font-size: ${({ theme }) => theme.fonts.roboto.bigger_bold.size};
+        line-height: ${({ theme }) => theme.fonts.roboto.bigger_bold.height};
+      }
+    }
+
+    p {
+        font-family: ${({ theme }) => theme.fonts.roboto.smaller_regular.family};
+        font-weight: ${({ theme }) => theme.fonts.roboto.smaller_regular.weight};
+        font-size: ${({ theme }) => theme.fonts.roboto.smaller_regular.size};
+        line-height: ${({ theme }) => theme.fonts.roboto.smaller_regular.height};
+    }
+  }
 `;
