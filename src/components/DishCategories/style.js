@@ -29,4 +29,21 @@ export const DishCategoriesSC = styled.div`
     gap: 1.6rem;
     
   }
+
+  @media screen and (min-width: 1000px) {
+    h2 {
+      font-family: ${({ theme }) => theme.fonts.poppins.medium_400};
+      font-weight: ${({ theme }) => theme.fonts.poppins.medium_400};
+      font-size: ${({ theme }) => theme.fonts.poppins.medium_400};
+      line-height: ${({ theme }) => theme.fonts.poppins.medium_400};
+    }
+
+    .carousel {
+      max-width: 112.2rem;
+    }
+
+    .slider {
+      gap: 2.7rem;
+    }
+  }
 `;

@@ -11,6 +11,12 @@ export const HomeSC = styled.div`
     flex-direction: column;
     gap: 2.4rem;
   }
+
+  @media screen and (min-width: 1000px) {
+    main {
+      gap: 4.8rem;
+    }
+  }
 `;
 
 export const BannerSC = styled.div`

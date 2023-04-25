@@ -24,6 +24,8 @@ export function DishCard({ admin }) {
 
         <p>Salada Ravanello</p>
 
+        <p className="description">Massa fresca com camarões e pesto.</p>
+
         <span>R$ 49,97</span>
 
         { admin ?
