@@ -58,4 +58,42 @@ export const BannerSC = styled.div`
       color: ${({ theme }) => theme.colors.light_300};
     }
   }
+
+  @media screen and (min-width: 1000px) {
+    width: 119rem;
+    height: 41.2rem;
+    margin: 2.6rem auto 4.8rem;
+
+    img {
+      width: 65.6rem;
+      height: 41.2rem;
+    }
+
+    > div {
+      width: 112rem;
+      height: 26rem;
+      background-image: ${({ theme }) => theme.colors.gradient_200};
+      border: none;
+      border-radius: 8px;
+      padding: 8.8rem 10rem 9.2rem 59.8rem;
+
+      h1 {
+        margin-bottom: .8rem;
+
+        font-family: ${({ theme }) => theme.fonts.poppins.medium_500.family};
+        font-weight: ${({ theme }) => theme.fonts.poppins.medium_500.weight};
+        font-size: ${({ theme }) => theme.fonts.poppins.medium_500.size};
+        line-height: ${({ theme }) => theme.fonts.poppins.medium_500.height};
+        color: ${({ theme }) => theme.colors.light_300};
+      }
+
+      p {
+        font-family: ${({ theme }) => theme.fonts.roboto.small_regular.family};
+        font-weight: ${({ theme }) => theme.fonts.roboto.small_regular.weight};
+        font-size: ${({ theme }) => theme.fonts.roboto.small_regular.size};
+        line-height: ${({ theme }) => theme.fonts.roboto.small_regular.height};
+        color: ${({ theme }) => theme.colors.light_300};
+      }
+    }
+  }
 `;

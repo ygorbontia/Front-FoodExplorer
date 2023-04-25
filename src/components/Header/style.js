@@ -210,6 +210,7 @@ export const HeaderSC = styled.header`
 
       label + button {
         width: 21.6rem;
+        height: 5.6rem;
 
         display: flex;
         align-items: center;
