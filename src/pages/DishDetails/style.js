@@ -8,7 +8,8 @@ export const DishDetailsSC = styled.div`
     width: 31.6rem;
     margin: 4.557rem auto 4.514rem;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1.6rem;
 
     > a {
@@ -25,17 +26,20 @@ export const DishDetailsSC = styled.div`
       color: ${({ theme }) => theme.colors.light_300};
     }
 
-    > img {
-      width: 26.4rem;
-      height: 26.4rem;
-      margin: 0 auto;
-    }
-
+    
     > div {
-      display: grid;
-      gap: 4.8rem;
+      display: flex;
+      flex-direction: column;
+      
+      > img {
+        width: 26.4rem;
+        height: 26.4rem;
+        margin: 0 auto 1.6rem;
+      }
 
       .details {
+        margin-bottom: 4.8rem;
+
         display: grid;
         gap: 2.4rem;
 
@@ -142,6 +146,30 @@ export const DishDetailsSC = styled.div`
           font-size: .946rem;
           line-height: 1.62rem;
           color: ${({ theme }) => theme.colors.light_100};
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    main {
+      width: 112.493rem;
+      margin: 2.4rem auto 15.5rem;
+    
+      > div {
+        display: flex;
+        flex-direction: row;
+
+        > img {
+          margin: 4.2rem 4.783rem 0 0;
+        }
+
+        .details {
+
+        }
+
+        .order {
+          
         }
       }
     }
