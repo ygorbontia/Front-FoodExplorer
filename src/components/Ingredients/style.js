@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const IngredientsSC = styled.div`
   width: 100%;
+  height: 3.2rem;
   background-color: ${({ theme, isNew }) => isNew ? 'transparent' : theme.colors.light_600};
   border: ${({ theme, isNew }) => isNew ? `dashed 1px ${theme.colors.light_500}` : 'none'};
   border-radius: 8px;

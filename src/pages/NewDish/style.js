@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NewDishSC = styled.div`
-  width: 42.8rem;
+  width: 100%;
   min-height: 100vh;
   margin: 0 auto;
 
@@ -33,6 +33,12 @@ export const NewDishSC = styled.div`
       font-size: ${({ theme }) => theme.fonts.poppins.medium_400.size};
       line-height: ${({ theme }) => theme.fonts.poppins.medium_400.height};
       color: ${({ theme }) => theme.colors.light_300};
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
     }
 
     .item {
@@ -120,7 +126,7 @@ export const NewDishSC = styled.div`
       background-color: ${({ theme }) => theme.colors.dark_800};
       border: none;
       border-radius: 8px;
-      padding: .4rem .8rem;
+      padding: .8rem;
 
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -129,6 +135,69 @@ export const NewDishSC = styled.div`
 
     > button {
       background-color: ${({ theme }) => theme.colors.tomato_400};
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    main {
+      width: 112rem;
+      margin: 4rem auto 11.6rem;
+
+      a {
+        gap: 1.1rem;
+        
+        font-family: ${({ theme }) => theme.fonts.poppins.bold_300.family};
+        font-weight: ${({ theme }) => theme.fonts.poppins.bold_300.weight};
+        font-size: ${({ theme }) => theme.fonts.poppins.bold_300.size};
+        line-height: ${({ theme }) => theme.fonts.poppins.bold_300.height};
+
+        svg {
+          width: 1.2rem;
+          height: 2.2rem;
+        }
+      }
+
+      h1 {
+        margin-bottom: .8rem;
+      }
+
+      .row {
+        flex-direction: row;
+        gap: 3.2rem;
+
+        > div {
+          gap: 1.6rem;
+        }
+      }
+
+      .image label {
+        width: 22.9rem;
+      }
+
+      .dish-category {
+        width: 36.4rem;
+
+        select {
+          height: 4.8rem;
+        }
+      }
+
+      .ingredients {
+        width: 83.7rem;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        > div {
+          width: fit-content;
+        }
+      }
+
+      > button {
+        width: fit-content;
+        padding: 1.2rem 2.4rem;
+
+        align-self: end;
+      }
     }
   }
 `;
