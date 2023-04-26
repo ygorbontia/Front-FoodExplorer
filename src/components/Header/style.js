@@ -192,7 +192,7 @@ export const HeaderSC = styled.header`
       justify-content: center;
       
       a {
-        width: 19.7rem;
+        width: fit-content;
         margin: 0;
         
         display: flex;
@@ -204,6 +204,8 @@ export const HeaderSC = styled.header`
         }
 
         p {
+          margin-top: -.7rem;
+
           justify-self: flex-end;
         }
       }

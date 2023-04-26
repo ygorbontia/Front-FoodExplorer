@@ -154,23 +154,59 @@ export const DishDetailsSC = styled.div`
   @media screen and (min-width: 1000px) {
     main {
       width: 112.493rem;
-      margin: 2.4rem auto 15.5rem;
+      margin: 3.2rem auto 15.544rem;
     
       > div {
+        margin-top: 2.6rem;
+
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         > img {
-          margin: 4.2rem 4.783rem 0 0;
+          width: 39.011rem;
+          height: 38.9rem;
+
+          margin: 0;
+          margin-right: 4.783rem;
         }
 
         .details {
+          text-align: start;
 
+          h2 {
+            font-weight: ${({ theme }) => theme.fonts.poppins.medium_500.weight};
+            font-size: ${({ theme }) => theme.fonts.poppins.medium_500.size};
+            line-height: ${({ theme }) => theme.fonts.poppins.medium_500.height};
+          }
+
+          p {
+            font-weight: ${({ theme }) => theme.fonts.poppins.regular_300.weight};
+            font-size: ${({ theme }) => theme.fonts.poppins.regular_300.size};
+            line-height: ${({ theme }) => theme.fonts.poppins.regular_300.height};
+          }
+
+          .ingredients {
+            display: flex;
+            flex-direction: row;
+            gap: 1.2rem;
+
+            span {
+              margin: 0;
+            }
+          }
         }
 
         .order {
-          
+          justify-content: flex-start;
+          gap: 3.3rem;
         }
+
+      }
+
+      .details + button {
+        width: fit-content;
+        padding: 1.2rem 2.4rem;
       }
     }
   }

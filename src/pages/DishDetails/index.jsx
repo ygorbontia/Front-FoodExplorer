@@ -6,7 +6,7 @@ import { Button } from '../../components/Button';
 
 import dish from '../../assets/dishes/image 2.png'
 
-export function DishDetails({ admin }) {
+export function DishDetails({ admin = true }) {
   return (
     <DishDetailsSC>
       <Header admin={ admin } />
