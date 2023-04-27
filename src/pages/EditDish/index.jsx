@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { api } from '../../services/api';
 
 import { EditDishSC } from './style';
+import { useAuth } from '../../hooks/auth';
 
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
@@ -12,10 +14,31 @@ import { Footer } from '../../components/Footer';
 
 export function EditDish() {
   const [ name, setName ] = useState();
-  // const [ category, setName ] = useState();
-  // const [ ingredients, setIngredients ] = useState([]);
-  // const [ price, setName ] = useState();
-  // const [ description, setName ] = useState();
+  const [ category, setCategory ] = useState();
+  const [ ingredients, setIngredients ] = useState([]);
+  const [ price, setPrice ] = useState();
+  const [ image, setImage ] = useState(null);
+  const [ description, setDescription ] = useState();
+
+  const { user } = useAuth();
+
+  async function updateDish() {
+    const dishe = {
+      name,
+      category,
+      price,
+      description,
+      user_id: user.id
+    }
+
+    try {
+      await api.put("/dishes");
+
+      alert("Prato alterado com sucesso.");
+    } catch {
+
+    }
+  }
 
   return (
     <EditDishSC>
@@ -49,12 +72,12 @@ export function EditDish() {
               <input type="file" name="image" id="dish-image" />
           </div>
           
-          <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" />
+          <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" onChange={e => setName(e.target.value)} />
 
           <div className="item dish-category">
             <label htmlFor="category">Categoria</label>
 
-            <select name="category" id="category">
+            <select name="category" id="category" onChange={e => setCategory(e.target.value)} >
               <option value="refeicoes">Refeições</option>
               <option value="sobremesas">Sobremesas</option>
               <option value="bebidas">Bebidas</option>
@@ -72,13 +95,13 @@ export function EditDish() {
             </div>
           </div>
 
-          <Input label="Preço" type="number" min="0.00" step="1" placeholder="R$ 35.00" />
+          <Input label="Preço" type="number" min="0.00" step="1" placeholder="R$ 35.00" onChange={e => setPrice(e.target.value)} />
         </div>
 
         <div className="item">
           <label htmlFor="description">Descrição</label>
 
-          <textarea name="description" id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+          <textarea name="description" id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" onChange={e => setDescription(e.target.value)} />
         </div>
 
         <div className="buttons">
