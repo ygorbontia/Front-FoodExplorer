@@ -1,5 +1,7 @@
 import { HeaderSC } from './style';
 
+import { Link } from 'react-router-dom';
+
 import receipt from '../../assets/Receipt.svg';
 
 import { Brand } from '../Brand';
@@ -17,10 +19,10 @@ export function Header({ admin }) {
             </svg>
           </button>
 
-          <a href="#">
+          <Link to ="/">
             <Brand />
             <p>admin</p>
-          </a>
+          </Link>
 
           <Search />
 
@@ -40,9 +42,9 @@ export function Header({ admin }) {
             </svg>
           </button>
 
-          <a href="#">
+          <Link to="/">
             <Brand />
-          </a>
+          </Link>
 
           <Search />
 

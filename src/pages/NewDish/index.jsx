@@ -1,5 +1,7 @@
 import { NewDishSC } from './style';
 
+import { Link } from 'react-router-dom';
+
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -12,13 +14,13 @@ export function NewDish() {
       <Header admin />
 
       <main>
-        <a href="#">
+        <Link to={ -1 }>
           <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M8.27586 0.338155C8.54509 0.607387 8.54509 1.0439 8.27586 1.31313L1.86922 7.71977L8.27586 14.1264C8.54509 14.3956 8.54509 14.8321 8.27586 15.1014C8.00663 15.3706 7.57011 15.3706 7.30088 15.1014L0.406758 8.20726C0.137526 7.93802 0.137526 7.50151 0.406758 7.23228L7.30088 0.338155C7.57011 0.0689224 8.00663 0.0689224 8.27586 0.338155Z" fill="white"/>
           </svg>
           
           voltar
-        </a>
+        </Link>
 
         <h1>Novo prato</h1>
 

@@ -24,6 +24,8 @@ export const DishCardSC = styled.div`
       position: absolute;
       top: 1.6rem;
       right: 1.6rem;
+
+      z-index: 2;
     }
 
     img {
