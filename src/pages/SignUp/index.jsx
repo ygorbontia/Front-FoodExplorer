@@ -1,5 +1,7 @@
 import { useState, useNavigate } from 'react';
 
+import { Link } from 'react-router-dom'
+
 import { api } from '../../services/api';
 
 import { SignUpSC } from './style';
@@ -13,7 +15,7 @@ export function SignUp() {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate;
 
   function handleSignUp() {
     if (!name || !email || !password) {
@@ -24,7 +26,7 @@ export function SignUp() {
       alert("Usuário cadastrado com sucesso!");
 
       navigate("/");
-    }). catch( err => {
+    }).catch( err => {
       if (err.response) {
         alert(err.response.data.message);
       } else {
@@ -49,7 +51,7 @@ export function SignUp() {
 
           <Button type="button" title="Criar conta" onClick={ handleSignUp } />
 
-          <a href="#">Já tenho uma conta</a>
+          <Link to={ -1 }>Já tenho uma conta</Link>
         </form>
       </main>
     </SignUpSC>
