@@ -1,9 +1,9 @@
 import { SignInSC } from './style';
 
 import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import { useState } from 'react'
-
 import { Link } from 'react-router-dom'
 
 import { Brand } from '../../components/Brand';
@@ -14,16 +14,10 @@ export function SignIn() {
   const [ email, setEmail ] = useState();
   const [ password, setPassword ] = useState();
 
+  const { signIn } = useAuth();
+
   function handleSignIn() {
-    api.post("/sessions", { email, password }).then(() => {
-      return alert("Login efetuado com sucesso!");
-    }).catch(err => {
-      if (err.response) {
-        return alert(err.response.data.message);
-      } else {
-        return alert("Erro ao efetuar login.");
-      }
-    })
+    signIn({ email, password })
   }
 
   return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NewDishSC = styled.div`
+export const EditDishSC = styled.div`
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
@@ -192,12 +192,24 @@ export const NewDishSC = styled.div`
         }
       }
 
-      > button {
-        width: fit-content;
-        background-color: ${({ theme }) => theme.colors.tomato_400};
-        padding: 1.2rem 2.4rem;
-
+      > div:last-child {
         align-self: end;
+        
+        display: flex;
+        gap: 3.2rem;
+
+        button {
+          width: fit-content;
+          padding: 1.2rem 2.4rem;
+        
+          &:first-child {
+            background-color: ${({ theme }) => theme.colors.dark_800};
+          }
+
+          &:last-child {
+            background-color: ${({ theme }) => theme.colors.tomato_400};
+          }
+        }
       }
     }
   }
