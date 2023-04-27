@@ -1,8 +1,8 @@
 import { ButtonSC } from './style';
 
-export function Button({ type, title }) {
+export function Button({ type, title, ...rest }) {
   return (
-    <ButtonSC type={ type }>
+    <ButtonSC type={ type } { ...rest }>
       { title }
     </ButtonSC>
   )
