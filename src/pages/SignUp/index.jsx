@@ -1,6 +1,6 @@
-import { useState, useNavigate } from 'react';
+import { useState } from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { api } from '../../services/api';
 
@@ -15,24 +15,25 @@ export function SignUp() {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   function handleSignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!");
     }
 
-    api.post("/user", { name, email, password }).then(() => {
-      alert("Usuário cadastrado com sucesso!");
-
-      navigate("/");
-    }).catch( err => {
-      if (err.response) {
-        alert(err.response.data.message);
-      } else {
-        alert("Não foi possível cadastrar o usuário");
-      }
+    api.post("/user", { name, email, password })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
     })
+      .catch( err => {
+        if (err.response) {
+          alert(err.response.data.message);
+        } else {
+          alert("Não foi possível cadastrar o usuário");
+        }
+      });
   }
 
   return (
