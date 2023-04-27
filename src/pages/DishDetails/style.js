@@ -35,6 +35,7 @@ export const DishDetailsSC = styled.div`
         width: 26.4rem;
         height: 26.4rem;
         margin: 0 auto 1.6rem;
+        border-radius: 100%;
       }
 
       .details {
