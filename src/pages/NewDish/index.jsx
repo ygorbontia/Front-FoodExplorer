@@ -19,7 +19,7 @@ export function NewDish() {
   const navigate = useNavigate();
 
   const [ name, setName ] = useState("");
-  const [ category, setCategory ] = useState();
+  const [ category, setCategory ] = useState("refeicoes");
   const [ price, setPrice ] = useState("");
   const [ image, setImage ] = useState("Selecione imagem");
   const [ description, setDescription ] = useState();
