@@ -133,8 +133,21 @@ export const EditDishSC = styled.div`
       gap: 1.6rem;
     }
 
-    > button {
-      background-color: ${({ theme }) => theme.colors.tomato_400};
+    > div:last-child {      
+      display: flex;
+      gap: 3.2rem;
+
+      button {
+        padding: 1.2rem 0;
+      
+        &:first-child {
+          background-color: ${({ theme }) => theme.colors.dark_800};
+        }
+
+        &:last-child {
+          background-color: ${({ theme }) => theme.colors.tomato_400};
+        }
+      }
     }
   }
 
@@ -194,21 +207,10 @@ export const EditDishSC = styled.div`
 
       > div:last-child {
         align-self: end;
-        
-        display: flex;
-        gap: 3.2rem;
 
         button {
           width: fit-content;
           padding: 1.2rem 2.4rem;
-        
-          &:first-child {
-            background-color: ${({ theme }) => theme.colors.dark_800};
-          }
-
-          &:last-child {
-            background-color: ${({ theme }) => theme.colors.tomato_400};
-          }
         }
       }
     }

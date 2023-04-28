@@ -1,19 +1,22 @@
 import { MenuSC } from './style';
 
+import { Link } from 'react-router-dom';
+
 import close from '../../assets/Close.svg'
 
 import { Search } from '../../components/Search';
 import { Footer } from '../../components/Footer';
 
 export function Menu({ admin }) {
+
   return (
     <MenuSC>
       <header>
-        <button type="button">
+        <Link to={ -1 }>
           <img src={ close } alt="" />
 
           Menu
-        </button>
+        </Link>
       </header>
 
       <nav>
@@ -22,7 +25,7 @@ export function Menu({ admin }) {
         <ul>
           { admin ?
             <li>
-              <a href="">Novo prato</a>
+              <Link to={ "/new-dish" }>Novo prato</Link>
             </li>
           :
             false

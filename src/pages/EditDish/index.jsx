@@ -53,7 +53,7 @@ export function EditDish() {
           voltar
         </Link>
 
-        <h1>Novo prato</h1>
+        <h1>Editar prato</h1>
 
         <div className="row">
           <div className="image item">

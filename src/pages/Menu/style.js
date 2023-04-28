@@ -10,13 +10,12 @@ export const MenuSC = styled.div`
     background-color: ${({ theme }) => theme.colors.dark_700};
     padding: 5.6rem 0 2.4rem 2.8rem;
 
-    button {
+    > a {
       background: none;
       border: none;
 
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 1.6rem;
 
       font-family: 'Roboto', sans-serif;
