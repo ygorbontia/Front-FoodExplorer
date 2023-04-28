@@ -1,11 +1,11 @@
 import { IngredientsSC } from './style';
 
-export function Ingredients({ isNew, value, placeholder }) {
+export function Ingredients({ isNew, value, placeholder, onChange, onClick }) {
   return (
     <IngredientsSC isNew={ isNew }>
-      <input type="text" defaultValue={ value } placeholder={ placeholder } readOnly={ !isNew } />
+      <input type="text" value={ value } placeholder={ placeholder } readOnly={ !isNew } onChange={ onChange } />
 
-      <button>
+      <button type="button" onClick={ onClick }>
         { isNew? 
           <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M0 4C0 3.81591 0.149238 3.66667 0.333333 3.66667H7.66667C7.85076 3.66667 8 3.81591 8 4C8 4.18409 7.85076 4.33333 7.66667 4.33333H0.333333C0.149238 4.33333 0 4.18409 0 4Z" fill="#7C7C8A"/>

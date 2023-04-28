@@ -1,6 +1,12 @@
 import { NewDishSC } from './style';
 
-import { Link } from 'react-router-dom';
+import { api } from '../../services/api';
+
+import { useAuth } from '../../hooks/auth';
+
+import { useState } from 'react';
+
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
@@ -9,6 +15,53 @@ import { Ingredients } from '../../components/Ingredients';
 import { Footer } from '../../components/Footer';
 
 export function NewDish() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const [ name, setName ] = useState("");
+  const [ category, setCategory ] = useState();
+  const [ price, setPrice ] = useState("");
+  const [ image, setImage ] = useState("Selecione imagem");
+  const [ description, setDescription ] = useState();
+
+  const [ ingredients, setIngredients ] = useState([]);
+  const [ newIngredient, setNewIngredient ] = useState("");
+
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient]);
+
+    setNewIngredient("");
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
+  }
+
+  async function handleCreateDish() {
+    const dishForm = new FormData();
+    dishForm.append("name", name)
+    dishForm.append("user_id", user.id)
+    dishForm.append("price", price)
+    dishForm.append("description", description)
+    dishForm.append("image", image)
+    dishForm.append("category", category)
+    ingredients.map(ingredient => dishForm.append("ingredients", ingredient))
+
+    try {
+      const response = await api.post("/dishes", dishForm);
+
+      alert(response.data);
+
+      return navigate("/");
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível criar o prato")
+      }
+    }
+  }
+
   return (
     <NewDishSC>
       <Header admin />
@@ -35,18 +88,18 @@ export function NewDish() {
                 <path fillRule="evenodd" clipRule="evenodd" d="M1 14C1.55228 14 2 14.4477 2 15V22H22V15C22 14.4477 22.4477 14 23 14C23.5523 14 24 14.4477 24 15V22C24 22.5304 23.7893 23.0391 23.4142 23.4142C23.0391 23.7893 22.5304 24 22 24H2C1.46957 24 0.960861 23.7893 0.585787 23.4142C0.210714 23.0391 0 22.5304 0 22V15C0 14.4477 0.447715 14 1 14Z" fill="white"/>
               </svg>
 
-              Selecione imagem
+              { image.name ? image.name : image }
             </label>
 
-              <input type="file" name="image" id="dish-image" />
+              <input type="file" name="image" id="dish-image" onChange={ e => setImage(e.target.files[0]) } />
           </div>
           
-          <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" />
+          <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" onChange={ e => setName(e.target.value) } />
 
           <div className="item dish-category">
             <label htmlFor="category">Categoria</label>
 
-            <select name="category" id="category">
+            <select name="category" id="category" onChange={ e => setCategory(e.target.value) }>
               <option value="refeicoes">Refeições</option>
               <option value="sobremesas">Sobremesas</option>
               <option value="bebidas">Bebidas</option>
@@ -59,21 +112,36 @@ export function NewDish() {
             <p>Ingredientes</p>
 
             <div className="ingredients">
-              <Ingredients isNew placeholder="Adicionar" />
-              <Ingredients value="Pão Naan" />
+              <Ingredients 
+                isNew 
+                placeholder="Adicionar" 
+                value={ newIngredient }
+                onChange={ e => setNewIngredient(e.target.value) } 
+                onClick={ handleAddIngredient } 
+              />
+
+              { 
+                ingredients.map((ingredient, index) => 
+                  <Ingredients 
+                    key={ String(index) }
+                    value={ ingredient }
+                    onClick={ () => handleRemoveIngredient(ingredient) } 
+                  />
+                )
+              }
             </div>
           </div>
 
-          <Input label="Preço" type="number" min="0.00" step="1" placeholder="R$ 35.00" />
+          <Input label="Preço" type="number" min="0.00" step="1" placeholder="R$ 35.00" onChange={ e => setPrice(e.target.value) } />
         </div>
 
         <div className="item">
           <label htmlFor="description">Descrição</label>
 
-          <textarea name="description" id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+          <textarea name="description" id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" onChange={ e => setDescription(e.target.value) } />
         </div>
 
-        <Button title="Salvar alterações" />
+        <Button title="Salvar alterações" onClick={ handleCreateDish } />
       </main>
       
       <Footer />

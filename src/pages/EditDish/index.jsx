@@ -17,22 +17,22 @@ export function EditDish() {
   const [ category, setCategory ] = useState();
   const [ ingredients, setIngredients ] = useState([]);
   const [ price, setPrice ] = useState();
-  const [ image, setImage ] = useState(null);
+  const [ image, setImage ] = useState();
   const [ description, setDescription ] = useState();
 
   const { user } = useAuth();
 
   async function updateDish() {
     const dishe = {
+      user_id: user.id,
       name,
-      category,
       price,
       description,
-      user_id: user.id
+      category
     }
 
     try {
-      await api.put("/dishes");
+      await api.put("/dishes", { dish, image });
 
       alert("Prato alterado com sucesso.");
     } catch {
@@ -69,7 +69,7 @@ export function EditDish() {
               Selecione imagem
             </label>
 
-              <input type="file" name="image" id="dish-image" />
+              <input type="file" name="image" id="dish-image" onChange={ e => setImage( e => e.target.files[0])} />
           </div>
           
           <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" onChange={e => setName(e.target.value)} />
