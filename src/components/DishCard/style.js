@@ -28,22 +28,29 @@ export const DishCardSC = styled.div`
       z-index: 2;
     }
 
-    img {
-      width: 8.8rem;
-      height: 8.8rem;
-      border-radius: 100%;
-    }
+    > a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
 
-    p {
-      font-family: ${({ theme }) => theme.fonts.poppins.medium_100.family};
-      font-weight: ${({ theme }) => theme.fonts.poppins.medium_100.weight};
-      font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
-      line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
-      color: ${({ theme }) => theme.colors.light_300};
-    }
+      img {
+        width: 8.8rem;
+        height: 8.8rem;
+        border-radius: 100%;
+      }
 
-    .description {
-      display: none;
+      p {
+        font-family: ${({ theme }) => theme.fonts.poppins.medium_100.family};
+        font-weight: ${({ theme }) => theme.fonts.poppins.medium_100.weight};
+        font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
+        line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
+        color: ${({ theme }) => theme.colors.light_300};
+      }
+
+      .description {
+        display: none;
+      }
     }
 
     span {
@@ -135,29 +142,31 @@ export const DishCardSC = styled.div`
         right: 1.8rem;
       }
 
-      img {
-        width: 17.6rem;
-        height: 17.6rem;
-      }
+      > a {
+        img {
+          width: 17.6rem;
+          height: 17.6rem;
+        }
 
-      p {
-        font-family: ${({ theme }) => theme.fonts.poppins.bold_300.family};
-        font-weight: ${({ theme }) => theme.fonts.poppins.bold_300.weight};
-        font-size: ${({ theme }) => theme.fonts.poppins.bold_300.size};
-        line-height: ${({ theme }) => theme.fonts.poppins.bold_300.height};
-      }
+        p {
+          font-family: ${({ theme }) => theme.fonts.poppins.bold_300.family};
+          font-weight: ${({ theme }) => theme.fonts.poppins.bold_300.weight};
+          font-size: ${({ theme }) => theme.fonts.poppins.bold_300.size};
+          line-height: ${({ theme }) => theme.fonts.poppins.bold_300.height};
+        }
 
-      .description {
-        padding: 0 2.4rem;
+        .description {
+          padding: 0 2.4rem;
 
-        display: block;
-        
-        font-family: ${({ theme }) => theme.fonts.roboto.smaller_regular.family};
-        font-weight: ${({ theme }) => theme.fonts.roboto.smaller_regular.weight};
-        font-size: ${({ theme }) => theme.fonts.roboto.smaller_regular.size};
-        line-height: ${({ theme }) => theme.fonts.roboto.smaller_regular.height};
-        color: ${({ theme }) => theme.colors.light_400};
-        text-align: center;
+          display: block;
+          
+          font-family: ${({ theme }) => theme.fonts.roboto.smaller_regular.family};
+          font-weight: ${({ theme }) => theme.fonts.roboto.smaller_regular.weight};
+          font-size: ${({ theme }) => theme.fonts.roboto.smaller_regular.size};
+          line-height: ${({ theme }) => theme.fonts.roboto.smaller_regular.height};
+          color: ${({ theme }) => theme.colors.light_400};
+          text-align: center;
+        }
       }
 
       span {

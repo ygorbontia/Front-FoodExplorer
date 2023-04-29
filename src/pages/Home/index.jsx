@@ -22,13 +22,6 @@ export function Home({ admin }) {
       setDishes(response.data);
     }
 
-    /* 
-      <DishCard admin={ admin } />
-      <DishCard admin={ admin } />
-      <DishCard admin={ admin } />
-      <DishCard admin={ admin } />
-    */
-
     fetchDishes();
   }, [])
   return (
@@ -53,6 +46,7 @@ export function Home({ admin }) {
                 <DishCard 
                   key={ String(dish.id) }
                   admin={ admin } 
+                  id={ dish.id }
                   name={ dish.name }
                   image={ dish.image }
                   price={ dish.price }
