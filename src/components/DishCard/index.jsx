@@ -2,11 +2,10 @@ import { DishCardSC } from './style';
 
 import { useNavigate } from 'react-router-dom';
 
-import dish from '../../assets/dishes/image 2.png';
 import increase from '../../assets/Increase.svg';
 import decrease from '../../assets/Decrease.svg';
 
-export function DishCard({ admin }) {
+export function DishCard({ admin, name, image, price, description }) {
   const navigate = useNavigate();
   
   return (
@@ -24,13 +23,13 @@ export function DishCard({ admin }) {
           }
         </button>
 
-        <img src={ dish } alt="imagem do prato" />
+        <img src={ image } alt="imagem do prato" />
 
-        <p>Salada Ravanello</p>
+        <p>{ name }</p>
 
-        <p className="description">Massa fresca com camarões e pesto.</p>
+        <p className="description">{ description }</p>
 
-        <span>R$ 49,97</span>
+        <span>R$ { price }</span>
 
         { admin ?
           false
