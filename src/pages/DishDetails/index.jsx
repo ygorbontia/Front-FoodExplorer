@@ -17,7 +17,7 @@ export function DishDetails({ admin }) {
   const image = dish && `api.defaults.baseURL/files/${ dish.image }`
 
   function handleEditDish() {
-    navigate(`/dish/${ params.id }/edit`)
+    navigate(`/dishes/${ params.id }/edit`)
   }
   
   useEffect(() => {

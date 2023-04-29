@@ -39,9 +39,10 @@ export function Home({ admin }) {
       </BannerSC>
 
       <main>
-        <DishCategories admin={ admin } title="Refeições">
-          {
-            dishes.filter(dish => dish.category == 'refeicoes').length > 0 && (
+        {
+          dishes.filter(dish => dish.category == 'refeicoes').length > 0 && (
+          <DishCategories admin={ admin } title="Refeições">
+            { 
               dishes.map(dish => 
                 <DishCard 
                   key={ String(dish.id) }
@@ -53,9 +54,10 @@ export function Home({ admin }) {
                   description={ dish.description }
                 />
               )
-            )
-          }
-        </DishCategories>
+            }
+          </DishCategories>
+          )
+        }
 
         {
           dishes.filter(dish => dish.category == 'sobremesas').length > 0 && (
@@ -65,6 +67,7 @@ export function Home({ admin }) {
                 <DishCard 
                   key={ String(dish.id) }
                   admin={ admin } 
+                  id={ dish.id }
                   name={ dish.name }
                   image={ dish.image }
                   price={ dish.price }

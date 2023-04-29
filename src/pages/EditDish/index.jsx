@@ -4,7 +4,7 @@ import { EditDishSC } from './style';
 import { useAuth } from '../../hooks/auth';
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
@@ -20,23 +20,28 @@ export function EditDish() {
   const [ image, setImage ] = useState();
   const [ description, setDescription ] = useState();
 
+  const params = useParams();
+  const navigate = useNavigate();
+
   const { user } = useAuth();
 
   async function updateDish() {
-    const dishe = {
-      user_id: user.id,
-      name,
-      price,
-      description,
-      category
-    }
+  }
 
-    try {
-      await api.put("/dishes", { dish, image });
-
-      alert("Prato alterado com sucesso.");
-    } catch {
-
+  async function handleDeleteDish() {
+    const confirmDelete = confirm("Tem certeza que deseja excluir esse prato?");
+    if (confirmDelete) {
+      try {
+        await api.delete(`/dishes/${ params.id }`);
+  
+        navigate("/");
+      } catch (err) {
+        if (err.response) {
+          alert(err.response.data.message);
+        } else {
+          alert("Não foi possível excluir o prato.");
+        }
+      }
     }
   }
 
@@ -105,7 +110,7 @@ export function EditDish() {
         </div>
 
         <div className="buttons">
-          <Button title="Excluir prato" />
+          <Button title="Excluir prato" onClick={ handleDeleteDish } />
           <Button title="Salvar alterações" />
         </div>
       </main>
