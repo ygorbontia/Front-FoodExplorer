@@ -1,3 +1,5 @@
+import { api } from '../../services/api';
+
 import { DishCardSC } from './style';
 
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +8,8 @@ import increase from '../../assets/Increase.svg';
 import decrease from '../../assets/Decrease.svg';
 
 export function DishCard({ admin, id, name, image, price, description }) {
+  const imageUrl = `${ api.defaults.baseURL }/files/${ image }`
+
   const navigate = useNavigate();
 
   function handleDetails(id) {
@@ -28,7 +32,7 @@ export function DishCard({ admin, id, name, image, price, description }) {
         </button>
 
         <a onClick={() => handleDetails(id)}>
-          <img src={ image } alt="imagem do prato" />
+          <img src={ imageUrl } alt="imagem do prato" />
 
           <p>{ name }</p>
 

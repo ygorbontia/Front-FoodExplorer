@@ -10,11 +10,13 @@ import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 
 export function DishDetails({ admin }) {
-  const [ dish, setDish ] = useState(null);
+  const [ dish, setDish ] = useState([]);
+  const [ ingredients, setIngredients ] = useState([]);
+
   const params = useParams();
   const navigate = useNavigate();
 
-  const image = dish && `api.defaults.baseURL/files/${ dish.image }`
+  const image = `${ api.defaults.baseURL }/files/${ dish.image }`
 
   function handleEditDish() {
     navigate(`/dishes/${ params.id }/edit`)
@@ -26,8 +28,15 @@ export function DishDetails({ admin }) {
       
       setDish(response.data);
     }
+
+    async function fetchIngredients() {
+      const response = await api.get(`/ingredients/${ params.id }`);
+
+      setIngredients(response.data);
+    }
     
     fetchDish();
+    fetchIngredients();
   }, [])
 
   return (
@@ -55,22 +64,16 @@ export function DishDetails({ admin }) {
 
                 <p>{ dish.description }</p>
 
-                <div className="ingredients">
-                  {
-                    console.log(dish.ingredients)
-                  }
-                  <span>alface</span>
-
-                  <span>cebola</span>
-
-                  <span>pão naan</span>
-
-                  <span>pepino</span>
-
-                  <span>rabanete</span>
-
-                  <span>tomate</span>
-                </div>
+                {
+                  ingredients.length > 0 && 
+                  <div className="ingredients">
+                    {
+                      ingredients.map(ingredient => (
+                        <span key={ ingredient.id }>{ ingredient.title }</span>
+                      ))
+                    }
+                  </div>
+                }
               </div>
 
               { admin ? 

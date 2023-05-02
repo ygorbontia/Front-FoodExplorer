@@ -43,7 +43,7 @@ export function Home({ admin }) {
           dishes.filter(dish => dish.category == 'refeicoes').length > 0 && (
           <DishCategories admin={ admin } title="Refeições">
             { 
-              dishes.map(dish => 
+              dishes.map(dish => dish.category == 'refeicoes' && (
                 <DishCard 
                   key={ String(dish.id) }
                   admin={ admin } 
@@ -53,7 +53,7 @@ export function Home({ admin }) {
                   price={ dish.price }
                   description={ dish.description }
                 />
-              )
+              ))
             }
           </DishCategories>
           )
@@ -63,7 +63,7 @@ export function Home({ admin }) {
           dishes.filter(dish => dish.category == 'sobremesas').length > 0 && (
           <DishCategories admin={ admin } title="Sobremesas">
             {
-              dishes.map(dish => 
+              dishes.map(dish => dish.category == 'sobremesas' && (
                 <DishCard 
                   key={ String(dish.id) }
                   admin={ admin } 
@@ -73,7 +73,7 @@ export function Home({ admin }) {
                   price={ dish.price }
                   description={ dish.description }
                 />
-              )
+              ))
             }
           </DishCategories>
           )
@@ -83,16 +83,17 @@ export function Home({ admin }) {
           dishes.filter(dish => dish.category == 'bebidas').length > 0 && (
           <DishCategories admin={ admin } title="Bebidas">
             {
-              dishes.map(dish => 
+              dishes.map(dish => dish.category == 'bebidas' && (
                 <DishCard 
                   key={ String(dish.id) }
                   admin={ admin } 
+                  id={ dish.id }
                   name={ dish.name }
                   image={ dish.image }
                   price={ dish.price }
                   description={ dish.description }
                 />
-              )
+              ))
             }
           </DishCategories>
           )
