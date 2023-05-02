@@ -1,9 +1,8 @@
 import { api } from '../../services/api';
 
 import { EditDishSC } from './style';
-import { useAuth } from '../../hooks/auth';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
@@ -13,26 +12,70 @@ import { Ingredients } from '../../components/Ingredients';
 import { Footer } from '../../components/Footer';
 
 export function EditDish() {
-  const [ name, setName ] = useState();
-  const [ category, setCategory ] = useState();
-  const [ ingredients, setIngredients ] = useState([]);
-  const [ price, setPrice ] = useState();
-  const [ image, setImage ] = useState();
-  const [ description, setDescription ] = useState();
-
   const params = useParams();
   const navigate = useNavigate();
 
-  const { user } = useAuth();
+  const [ dish, setDish ] = useState({});
+  
+  const [ name, setName ] = useState();
+  const [ category, setCategory ] = useState();
+  const [ image, setImage ] = useState(null);
+  const [ price, setPrice ] = useState();
+  const [ description, setDescription ] = useState();
 
-  async function updateDish() {
+  const [ ingredients, setIngredients ] = useState([]);
+  const [ newIngredient, setNewIngredient ] = useState("");
+
+  dish.name = name ?? dish.name;
+  dish.description = description ?? dish.description;
+  dish.image = image ?? dish.image;
+  dish.price = price ?? dish.price;
+  dish.category = category ?? dish.category;
+  
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient]);
+
+    setNewIngredient("");
   }
 
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
+  }
+
+  async function handleUpdateDish() {
+    const dishForm = new FormData();
+    dishForm.append("name", dish.name)
+    dishForm.append("price", dish.price)
+    dishForm.append("description", dish.description)
+    dishForm.append("category", dish.category)
+    dishForm.append("ingredients", JSON.stringify(ingredients))
+    
+    {
+      image ? dishForm.append("image", image) : false
+    }
+
+    try {
+      const response = await api.put(`/dishes/${ params.id }`, dishForm);
+
+      alert(response.data);
+
+      navigate("/");
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível alterar o prato")
+      }
+    }
+  }
+  
   async function handleDeleteDish() {
     const confirmDelete = confirm("Tem certeza que deseja excluir esse prato?");
     if (confirmDelete) {
       try {
         await api.delete(`/dishes/${ params.id }`);
+
+        alert("Prato excluído com sucesso.");
   
         navigate("/");
       } catch (err) {
@@ -44,6 +87,23 @@ export function EditDish() {
       }
     }
   }
+
+  useEffect(() => {
+    async function handleDish() {
+      const response = await api.get(`/dishes/${ params.id }`);
+
+      setDish(response.data);
+    }
+
+    async function handleIngredients() {
+      const response = await api.get(`/ingredients/${ params.id }`);
+
+      setIngredients(response.data)
+    }
+
+    handleDish();
+    handleIngredients();
+  }, [])
 
   return (
     <EditDishSC>
@@ -71,13 +131,13 @@ export function EditDish() {
                 <path fillRule="evenodd" clipRule="evenodd" d="M1 14C1.55228 14 2 14.4477 2 15V22H22V15C22 14.4477 22.4477 14 23 14C23.5523 14 24 14.4477 24 15V22C24 22.5304 23.7893 23.0391 23.4142 23.4142C23.0391 23.7893 22.5304 24 22 24H2C1.46957 24 0.960861 23.7893 0.585787 23.4142C0.210714 23.0391 0 22.5304 0 22V15C0 14.4477 0.447715 14 1 14Z" fill="white"/>
               </svg>
 
-              Selecione imagem
+              { dish.image ? dish.image.name : 'Selecione o arquivo' }
             </label>
 
-              <input type="file" name="image" id="dish-image" onChange={ e => setImage( e => e.target.files[0])} />
+              <input type="file" accept="image/png, image/jpeg" name="image" id="dish-image" onChange={ e => setImage(e.target.files[0])} />
           </div>
           
-          <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar" onChange={e => setName(e.target.value)} />
+          <Input label="Nome" type="text" defaultValue={ dish.name } placeholder="Ex.: Salada Ceasar" onChange={e => setName(e.target.value)} />
 
           <div className="item dish-category">
             <label htmlFor="category">Categoria</label>
@@ -86,6 +146,21 @@ export function EditDish() {
               <option value="refeicoes">Refeições</option>
               <option value="sobremesas">Sobremesas</option>
               <option value="bebidas">Bebidas</option>
+              {
+                dish.category == "refeicoes" && (
+                  <option defaultValue={ dish.category } selected style={{ display: "none" }} hidden={ true }>Refeições</option>
+                )
+              }
+              {
+                dish.category == "sobremesas" && (
+                  <option defaultValue={ dish.category } selected style={{ display: "none" }} hidden={ true }>Sobremesas</option>
+                )
+              }
+              {
+                dish.category == "bebidas" && (
+                  <option defaultValue={ dish.category } selected style={{ display: "none" }} hidden={ true }>Bebidas</option>
+                )
+              }
             </select>
           </div>
         </div>
@@ -95,23 +170,38 @@ export function EditDish() {
             <p>Ingredientes</p>
 
             <div className="ingredients">
-              <Ingredients isNew placeholder="Adicionar" />
-              <Ingredients value="Pão Naan" />
+              <Ingredients 
+                isNew 
+                placeholder="Adicionar" 
+                value={ newIngredient }
+                onChange={ e => setNewIngredient(e.target.value) } 
+                onClick={ handleAddIngredient } 
+              />
+
+              { 
+                ingredients.map((ingredient, index) => 
+                  <Ingredients 
+                    key={ String(index) }
+                    value={ ingredient.title || ingredient }
+                    onClick={ () => handleRemoveIngredient(ingredient) } 
+                  />
+                )
+              }
             </div>
           </div>
 
-          <Input label="Preço" type="number" min="0.00" step="1" placeholder="R$ 35.00" onChange={e => setPrice(e.target.value)} />
+          <Input label="Preço" type="number" min="0.00" step="1" defaultValue={ dish.price } placeholder="R$ 35.00" onChange={e => setPrice(e.target.value)} />
         </div>
 
         <div className="item">
           <label htmlFor="description">Descrição</label>
 
-          <textarea name="description" id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" onChange={e => setDescription(e.target.value)} />
+          <textarea name="description" id="description" defaultValue={ dish.description } placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" onChange={e => setDescription(e.target.value)} />
         </div>
 
         <div className="buttons">
           <Button title="Excluir prato" onClick={ handleDeleteDish } />
-          <Button title="Salvar alterações" />
+          <Button title="Salvar alterações" onClick={ handleUpdateDish } />
         </div>
       </main>
       
