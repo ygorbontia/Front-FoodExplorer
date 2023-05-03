@@ -41,7 +41,7 @@ export function NewDish() {
     const dishForm = new FormData();
     dishForm.append("name", name)
     dishForm.append("user_id", user.id)
-    dishForm.append("price", price)
+    { price.includes(",") ? dishForm.append("price", price.replace(",", ".")) : dishForm.append("price", price) }
     dishForm.append("description", description)
     dishForm.append("image", image)
     dishForm.append("category", category)
