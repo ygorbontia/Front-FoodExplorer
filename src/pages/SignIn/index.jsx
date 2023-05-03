@@ -19,13 +19,16 @@ export function SignIn() {
   const { signIn } = useAuth();
 
   function handleSignIn() {
+    setLoading(true);
     try {
-      signIn({ email, password });
+      signIn({ email, password })
     } catch (err) {
-      if (!err) {
-        setLoading(true)
+      if (err) {
+        setLoading(false)
       }
     }
+    
+    
   }
 
   return (
