@@ -46,7 +46,7 @@ export function NewDish() {
     dishForm.append("image", image)
     dishForm.append("category", category)
     ingredients.map(ingredient => dishForm.append("ingredients", ingredient))
-
+ 
     try {
       const response = await api.post("/dishes", dishForm);
 
