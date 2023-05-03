@@ -1,7 +1,8 @@
 import { SignInSC } from './style';
 
-import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
+
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -13,11 +14,18 @@ import { Button } from '../../components/Button';
 export function SignIn() {
   const [ email, setEmail ] = useState();
   const [ password, setPassword ] = useState();
+  const [ loading, setLoading ] = useState(false);
 
   const { signIn } = useAuth();
 
   function handleSignIn() {
-    signIn({ email, password })
+    try {
+      signIn({ email, password });
+    } catch (err) {
+      if (!err) {
+        setLoading(true)
+      }
+    }
   }
 
   return (
@@ -32,11 +40,23 @@ export function SignIn() {
 
           <Input label="Senha" type="password" placeholder="No mínimo 6 caracteres" onChange={ e => setPassword(e.target.value ) }  />
 
-          <Button type="button" title="Entrar" onClick={ handleSignIn } />
+          <Button type="button" title="Entrar" onClick={ handleSignIn } disabled={ loading } />
 
           <Link to="/register">Criar uma conta</Link>
         </form>
       </main>
+
+      <div className="loading" hidden={!loading}>
+        <ClipLoader
+          loading={loading}
+          size={150}
+          color="rgba(171,77,85,1)"
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+
+        <p hidden={!loading}>Carregando...</p>
+      </div>
     </SignInSC>
   )
 };

@@ -13,4 +13,8 @@ export const ButtonSC = styled.button`
   font-size: ${({ theme }) => theme.fonts.poppins.medium_100.size};
   line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
   color: ${({ theme }) => theme.colors.light_100};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.tomato_300};
+  }
 `;

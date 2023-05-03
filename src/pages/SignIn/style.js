@@ -32,6 +32,26 @@ export const SignInSC = styled.div`
     }
   }
 
+  .loading {
+    position: absolute;
+    top: 40%;
+    right: 45%;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    font-family: ${({ theme }) => theme.fonts.poppins.medium_400.family};
+    font-weight: ${({ theme }) => theme.fonts.poppins.medium_400.weight};
+    font-size: ${({ theme }) => theme.fonts.poppins.medium_400.size};
+    line-height: ${({ theme }) => theme.fonts.poppins.medium_400.height};
+    color: ${({ theme }) => theme.colors.light_400};
+  }
+
   @media screen and (min-width: 1000px) {
     main {
       width: 100%;
