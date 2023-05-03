@@ -31,14 +31,18 @@ O **admin** pode realizar algumas funções dentro da aplicação, como visualiz
 O método de autenticação pode demorar para carregar pois o servidor está hospedado online, mas caso queira clonar o back-end e utilizar ambos na sua máquina, acesse o link abaixo e siga o passo-a-passo a seguir:
 1. Acesse o link: https://github.com/ygorbontia/Back-FoodExplorer
 3. Siga o README.md do back-end
-	-- Caso tenha alterado a PORT do back-end, edite a baseURL no arquivo src/services/api.js, substituindo o '3000' pela nova PORT.
-4. Execute o `npm run dev` na pasta do back-end **e** na pasta do front-end
+4. Altere o arquivo /src/services/api.js do front-end passando a baseURL como "http://localhost:3000" (Caso tenha alterado a PORT do back-end, substitua o '3000' pela nova PORT)
+5. Execute o `npm run dev` na pasta do back-end **e** na pasta do front-end
 
 ## Acessos
 **User**
+
 *E-mail:* user@email.com
+
 *Senha:* 123
 
 **Admin**
+
 *E-mail:* admin@email.com
+
 *Senha:* 123
