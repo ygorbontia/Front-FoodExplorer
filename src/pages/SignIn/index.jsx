@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/auth';
 
 import ClipLoader from "react-spinners/ClipLoader";
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Brand } from '../../components/Brand';

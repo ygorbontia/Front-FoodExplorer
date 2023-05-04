@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom'
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 import { api } from '../../services/api';
 
 import { SignUpSC } from './style';
@@ -14,6 +16,7 @@ export function SignUp() {
   const [ name, setName ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ loading, setLoading ] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,12 +25,14 @@ export function SignUp() {
       return alert("Preencha todos os campos!");
     }
 
+    setLoading(true)
     api.post("/user", { name, email, password })
       .then(() => {
         alert("Usuário cadastrado com sucesso!");
         navigate("/");
     })
       .catch( err => {
+        setLoading(false)
         if (err.response) {
           alert(err.response.data.message);
         } else {
@@ -55,6 +60,18 @@ export function SignUp() {
           <Link to={ -1 }>Já tenho uma conta</Link>
         </form>
       </main>
+      
+      <div className="loading" hidden={!loading}>
+        <ClipLoader
+          loading={loading}
+          size={150}
+          color="rgba(171,77,85,1)"
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+
+        <p hidden={!loading}>Carregando...</p>
+      </div>
     </SignUpSC>
   )
 };
