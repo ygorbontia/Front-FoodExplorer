@@ -26,6 +26,13 @@ export const DishCardSC = styled.div`
       right: 1.6rem;
 
       z-index: 2;
+
+    }
+
+    .favorite {
+      svg path {
+        fill: ${({ theme }) => theme.colors.light_300};
+      }
     }
 
     > a {
