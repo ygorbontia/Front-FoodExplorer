@@ -1,6 +1,6 @@
 import { api } from '../../services/api';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { DishCardSC } from './style';
 
@@ -11,7 +11,8 @@ import decrease from '../../assets/Decrease.svg';
 
 export function DishCard({ admin, id, name, image, price, description }) {
   const imageUrl = `${ api.defaults.baseURL }/files/${ image }`
-  const [ favorite, setFavorite ] = useState(false)
+  const [ favorite, setFavorite ] = useState(false);
+  const [ quantity, setQuantity ] = useState(1)
 
   const navigate = useNavigate();
 
@@ -26,6 +27,16 @@ export function DishCard({ admin, id, name, image, price, description }) {
       setFavorite(false)
     }
   }
+
+  function addToCart() {
+    alert("O item foi adicionado ao carrinho");
+
+    setQuantity(1);
+  }
+
+  useEffect(() => {
+    setQuantity(quantity)
+  }, [ quantity ])
   
   return (
     <DishCardSC>
@@ -59,18 +70,18 @@ export function DishCard({ admin, id, name, image, price, description }) {
         :
           <div>
             <div className="quantity">
-              <button>
+              <button onClick={ () => setQuantity(quantity - 1)}>
                 <img src={ decrease } alt="" />
               </button>
 
-              <input type="number" min="1" max="99" defaultValue={ 1 } />
+              <input type="number" min="1" max="99" value={ quantity < 1 ? '1' : quantity } onChange={ e => setQuantity(e.target.value) } />
 
-              <button>
+              <button onClick={ () => setQuantity(quantity + 1)}>
                 <img src={ increase } alt="" />
               </button>
             </div>
 
-            <button type="button">
+            <button type="button" onClick={ addToCart }>
               incluir
             </button>
           </div>
