@@ -48,8 +48,16 @@ export const HeaderSC = styled.header`
     justify-content: space-between;
 
     .receipt {
-      background: none;
+      background-color: ${({ theme }) => theme.colors.tomato_100};
       border: none;
+      
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.tomato_200};
+      }
+
+      &:disabled {
+        background-color: ${({ theme }) => theme.colors.tomato_400};
+      }
 
       position: relative;
 

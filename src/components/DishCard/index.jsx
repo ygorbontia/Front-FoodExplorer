@@ -6,6 +6,8 @@ import { DishCardSC } from './style';
 
 import { useNavigate } from 'react-router-dom';
 
+import { Button } from '../Button';
+
 import increase from '../../assets/Increase.svg';
 import decrease from '../../assets/Decrease.svg';
 
@@ -63,27 +65,25 @@ export function DishCard({ admin, id, name, image, price, description }) {
           <p className="description">{ description }</p>
         </a>
 
-        <span>R$ { price }</span>
+        <span>R$ { (price * quantity).toFixed(2) }</span>
 
         { admin ?
           false
         :
           <div>
             <div className="quantity">
-              <button onClick={ () => setQuantity(quantity - 1)}>
+              <button onClick={ () => quantity > 1 ? setQuantity(quantity - 1) : false}>
                 <img src={ decrease } alt="" />
               </button>
 
-              <input type="number" min="1" max="99" value={ quantity < 1 ? '1' : quantity } onChange={ e => setQuantity(e.target.value) } />
+              <input type="number" min="1" max="99" value={ quantity < 1 ? '1' : quantity } onChange={ e => setQuantity(Number(e.target.value)) } />
 
-              <button onClick={ () => setQuantity(quantity + 1)}>
+              <button onClick={ () => quantity < 99 ? setQuantity(quantity + 1) : false}>
                 <img src={ increase } alt="" />
               </button>
             </div>
 
-            <button type="button" onClick={ addToCart }>
-              incluir
-            </button>
+            <Button type="button" onClick={ addToCart } title="incluir" />
           </div>
         }
       </div>

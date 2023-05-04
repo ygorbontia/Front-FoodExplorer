@@ -14,7 +14,11 @@ export const ButtonSC = styled.button`
   line-height: ${({ theme }) => theme.fonts.poppins.medium_100.height};
   color: ${({ theme }) => theme.colors.light_100};
 
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.tomato_200};
+  }
+
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.light_600};
+    background-color: ${({ theme }) => theme.colors.tomato_400};
   }
 `;

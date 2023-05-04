@@ -147,6 +147,14 @@ export const DishDetailsSC = styled.div`
           font-size: .946rem;
           line-height: 1.62rem;
           color: ${({ theme }) => theme.colors.light_100};
+      
+          &:hover {
+            background-color: ${({ theme }) => theme.colors.tomato_200};
+          }
+
+          &:disabled {
+            background-color: ${({ theme }) => theme.colors.tomato_400};
+          }
         }
       }
     }
