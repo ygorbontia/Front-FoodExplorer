@@ -6,8 +6,10 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [ data, setData ] = useState({});
-
+  
   async function signIn({ email, password }) {
+    let loadingStatus = true;
+
     try {
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data
@@ -24,6 +26,8 @@ function AuthProvider({ children }) {
       } else {
         alert("Não foi possível efetuar o login.");
       }
+      
+      return loadingStatus = false;
     }
   }
 
@@ -52,7 +56,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={{ 
       signIn, 
       signOut,
-      user: data.user, 
+      user: data.user
     }}>
       { children }
     </AuthContext.Provider>

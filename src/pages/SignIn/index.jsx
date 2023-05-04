@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/auth';
 
 import ClipLoader from "react-spinners/ClipLoader";
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Brand } from '../../components/Brand';
@@ -16,19 +16,12 @@ export function SignIn() {
   const [ password, setPassword ] = useState();
   const [ loading, setLoading ] = useState(false);
 
-  const { signIn } = useAuth();
+  const { signIn,  } = useAuth();
 
-  function handleSignIn() {
-    setLoading(true);
-    try {
-      signIn({ email, password })
-    } catch (err) {
-      if (err) {
-        setLoading(false)
-      }
-    }
-    
-    
+  async function handleSignIn() {
+    setLoading(true)
+    const loadingStatus = await signIn({ email, password });
+    setLoading(loadingStatus)
   }
 
   return (

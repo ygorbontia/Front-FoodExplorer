@@ -15,6 +15,6 @@ export const ButtonSC = styled.button`
   color: ${({ theme }) => theme.colors.light_100};
 
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.tomato_300};
+    background-color: ${({ theme }) => theme.colors.light_600};
   }
 `;
