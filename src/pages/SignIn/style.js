@@ -34,8 +34,8 @@ export const SignInSC = styled.div`
 
   .loading {
     position: absolute;
-    top: 40%;
-    right: 45%;
+    top: 30%;
+    right: 21%;
 
     z-index: 2;
 
@@ -83,6 +83,11 @@ export const SignInSC = styled.div`
           text-align: center;
         }
       }
+    }
+
+    .loading {
+      top: 40%;
+      right: 45%;
     }
   }
 `;
