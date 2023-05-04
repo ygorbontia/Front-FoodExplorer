@@ -17,7 +17,7 @@ export function Home({ admin }) {
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get("/dishes")
+      const response = await api.get("/dishes?name=")
 
       setDishes(response.data);
     }

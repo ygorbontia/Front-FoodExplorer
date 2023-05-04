@@ -1,6 +1,9 @@
 import { HeaderSC } from './style';
 
+import { useState, useEffect } from 'react';
+
 import { useAuth } from '../../hooks/auth';
+import { useSearch } from '../../hooks/search';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,6 +15,8 @@ import { Search } from '../Search';
 
 export function Header({ admin }) {
   const { signOut } = useAuth();
+  const { ingredientsSearch, search } = useSearch();
+
   const navigate = useNavigate();
 
   function handleSignOut() {
@@ -22,6 +27,8 @@ export function Header({ admin }) {
       navigate("/");
     }
   }
+
+  console.log(search)
 
   return (
     <HeaderSC>
@@ -38,7 +45,7 @@ export function Header({ admin }) {
             <p>admin</p>
           </Link>
 
-          <Search />
+          <Search onChange={ e => ingredientsSearch(e.target.value) } />
 
           <Button title="Novo prato" onClick={ () => navigate("/new-dish") } />
 
