@@ -2,6 +2,8 @@ import { HomeSC, BannerSC } from './style';
 
 import { useState, useEffect } from 'react';
 
+import { useSearch } from '../../hooks/search';
+
 import { api } from '../../services/api';
 
 import { DishCard } from '../../components/DishCard';
@@ -14,16 +16,17 @@ import { Footer } from '../../components/Footer';
 
 export function Home({ admin }) {
   const [ dishes, setDishes ] = useState([]);
+  const { search } = useSearch();
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get("/dishes?name=")
+      const response = await api.get(`/dishes?name=${ search }`)
 
       setDishes(response.data);
     }
 
     fetchDishes();
-  }, [])
+  }, [ search ])
   return (
     <HomeSC>
       <Header admin={ admin } />

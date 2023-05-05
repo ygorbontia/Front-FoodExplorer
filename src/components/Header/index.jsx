@@ -1,6 +1,6 @@
 import { HeaderSC } from './style';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useAuth } from '../../hooks/auth';
 import { useSearch } from '../../hooks/search';
@@ -15,7 +15,7 @@ import { Search } from '../Search';
 
 export function Header({ admin }) {
   const { signOut } = useAuth();
-  const { ingredientsSearch, search } = useSearch();
+  const { ingredientsSearch, search, checkURL, setCheckURL } = useSearch();
 
   const navigate = useNavigate();
 
@@ -28,7 +28,12 @@ export function Header({ admin }) {
     }
   }
 
-  console.log(search)
+  function handleSearch() {
+    if (checkURL == true) {
+      navigate("/");
+      setCheckURL(false);
+    }
+  }
 
   return (
     <HeaderSC>
@@ -45,7 +50,7 @@ export function Header({ admin }) {
             <p>admin</p>
           </Link>
 
-          <Search onChange={ e => ingredientsSearch(e.target.value) } />
+          <Search defaultValue={ search } onChange={ e => ingredientsSearch(e.target.value) } onKeyDown={ e => e.key == 'Enter' ? handleSearch() : false} />
 
           <Button title="Novo prato" onClick={ () => navigate("/new-dish") } />
 

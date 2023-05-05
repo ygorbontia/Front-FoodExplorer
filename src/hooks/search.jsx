@@ -6,17 +6,18 @@ export const SearchContext = createContext({});
 
 function SearchProvider({ children }) {
   const [ search, setSearch ] = useState("");
+  const [ checkURL, setCheckURL ] = useState(false);
 
   function ingredientsSearch(dishName) {
     setSearch(dishName)
 
-    if (window.location.href !== api.defaults.baseUrl) {
-      
+    if (window.location.href.includes("dish" || "menu")) {
+      setCheckURL(true);
     }
   }
   
   return (
-    <SearchContext.Provider value={{ ingredientsSearch, search }}>
+    <SearchContext.Provider value={{ ingredientsSearch, search, checkURL, setCheckURL }}>
       { children }
     </SearchContext.Provider>
   )
