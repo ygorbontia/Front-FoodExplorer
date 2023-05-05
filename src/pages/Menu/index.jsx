@@ -8,7 +8,6 @@ import { Search } from '../../components/Search';
 import { Footer } from '../../components/Footer';
 
 export function Menu({ admin }) {
-
   return (
     <MenuSC>
       <header>

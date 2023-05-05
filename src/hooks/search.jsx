@@ -1,7 +1,5 @@
 import { createContext, useContext, useState } from 'react';
 
-import { api } from '../services/api'
-
 export const SearchContext = createContext({});
 
 function SearchProvider({ children }) {
@@ -17,7 +15,7 @@ function SearchProvider({ children }) {
   }
   
   return (
-    <SearchContext.Provider value={{ ingredientsSearch, search, checkURL, setCheckURL }}>
+    <SearchContext.Provider value={{ ingredientsSearch, search, setSearch, checkURL, setCheckURL }}>
       { children }
     </SearchContext.Provider>
   )
