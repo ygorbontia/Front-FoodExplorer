@@ -1,7 +1,5 @@
 import { HeaderSC } from './style';
 
-import { useEffect } from 'react';
-
 import { useAuth } from '../../hooks/auth';
 import { useSearch } from '../../hooks/search';
 

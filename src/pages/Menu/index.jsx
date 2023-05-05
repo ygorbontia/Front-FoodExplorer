@@ -1,6 +1,9 @@
 import { MenuSC } from './style';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../hooks/auth';
+import { useSearch } from '../../hooks/search';
 
 import close from '../../assets/Close.svg'
 
@@ -8,6 +11,27 @@ import { Search } from '../../components/Search';
 import { Footer } from '../../components/Footer';
 
 export function Menu({ admin }) {
+  const { signOut } = useAuth();
+  const { ingredientsSearch, search, setSearch, checkURL, setCheckURL } = useSearch();
+
+  const navigate = useNavigate();
+
+  function handleSignOut() {
+    const confirmSignOut = confirm("Tem certeza que deseja sair?");
+    if (confirmSignOut) {
+      signOut();
+
+      navigate("/");
+
+      setSearch("");
+    }
+  }
+
+  function handleSearch() {
+    navigate("/");
+    setCheckURL(false);
+  }
+
   return (
     <MenuSC>
       <header>
@@ -19,7 +43,7 @@ export function Menu({ admin }) {
       </header>
 
       <nav>
-        <Search />
+        <Search defaultValue={ search } onChange={ e => ingredientsSearch(e.target.value) } onKeyDown={ e => e.key == 'Enter' ? handleSearch() : false} />
 
         <ul>
           { admin ?
@@ -30,7 +54,7 @@ export function Menu({ admin }) {
             false
           }
           <li>
-            <a href="">Sair</a>
+            <a onClick={ handleSignOut }>Sair</a>
           </li>
         </ul>
       </nav>
